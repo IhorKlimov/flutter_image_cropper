@@ -14,10 +14,10 @@
 
 import 'dart:async';
 import 'dart:io';
-import 'package:meta/meta.dart';
-import 'package:flutter/material.dart';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:meta/meta.dart';
 
 ///
 /// A convenient class wraps all api functions of **ImageCropper** plugin
@@ -57,6 +57,8 @@ class ImageCropper {
     String toolbarTitle, // for only Android
     Color toolbarColor, // for only Android
     bool circleShape: false,
+    Color statusBarColor, // for only Android
+    Color activeWidgetColor, // for only Android
   }) async {
     assert(sourcePath != null);
 
@@ -77,7 +79,9 @@ class ImageCropper {
       'ratio_y': ratioY,
       'toolbar_title': toolbarTitle,
       'toolbar_color': toolbarColor?.value,
-      'circle_shape': circleShape
+      'circle_shape': circleShape,
+      'status_bar_color': statusBarColor?.value,
+      'active_widget_color': activeWidgetColor?.value,
     });
     return resultPath == null ? null : new File(resultPath);
   }
